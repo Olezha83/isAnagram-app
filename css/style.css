@@ -1,0 +1,35 @@
+h1,
+div {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+[id$='answer'] {
+  font-size: 18px;
+  margin-top: 12px;
+  font-style: italic;
+  display: none;
+}
+
+#positive_answer {
+  color: #090;
+}
+
+#negative_answer,
+.error::placeholder {
+  color: #900;
+}
+
+.error {
+  border: 2px solid #900;
+  border-radius: 4px;
+}
+
+.answer_visible {
+  display: block;
+}
