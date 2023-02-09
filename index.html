@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <title>Anagram</title>
   </head>
   <body>
     <div class="app">
       <h1 id="question">Are these strings an anagram?</h1>
-      <div>
+      <form id="form">
         <input id="string_one" placeholder="Type first string here" />
         <input id="string_two" placeholder="Type second string here" />
-        <button id="check_button">Check</button>
-      </div>
+        <button type="submit">Check</button>
+      </form>
       <div id="positive_answer">Yes, these strings are an anagram</div>
       <div id="negative_answer">No, these strings are not an anagram</div>
     </div>

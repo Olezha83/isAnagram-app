@@ -1,18 +1,18 @@
-const [stringOne, stringTwo, checkButton, positiveAnswer, negativeAnswer] = [
+const [form, inputOne, inputTwo, positiveAnswer, negativeAnswer] = [
+  'form',
   'string_one',
   'string_two',
-  'check_button',
   'positive_answer',
   'negative_answer',
 ].map((id) => document.getElementById(id))
 
 function isAnagram() {
-  if (stringOne.length !== stringTwo.length) {
+  if (inputOne.length !== inputTwo.length) {
     return negativeAnswer.classList.add('answer_visible')
   }
 
-  return Array.from(stringOne.value.toLowerCase()).sort().join('') ===
-    Array.from(stringTwo.value.toLowerCase()).sort().join('')
+  return Array.from(inputOne.value.toLowerCase()).sort().join('') ===
+    Array.from(inputTwo.value.toLowerCase()).sort().join('')
     ? positiveAnswer.classList.add('answer_visible')
     : negativeAnswer.classList.add('answer_visible')
 }
@@ -25,23 +25,25 @@ function focusHandler(event) {
     positiveAnswer.classList.contains('answer_visible') ||
     negativeAnswer.classList.contains('answer_visible')
   ) {
-    stringOne.value = ''
-    stringTwo.value = ''
+    inputOne.value = ''
+    inputTwo.value = ''
   }
 
   positiveAnswer.classList.remove('answer_visible')
   negativeAnswer.classList.remove('answer_visible')
 }
 
-;[stringOne, stringTwo].forEach((item) =>
-  item.addEventListener('focus', focusHandler)
+;[inputOne, inputTwo].forEach((input) =>
+  input.addEventListener('focus', focusHandler)
 )
 
 function showError() {
-  !stringOne.value && stringOne.classList.add('error')
-  !stringTwo.value && stringTwo.classList.add('error')
+  !inputOne.value && inputOne.classList.add('error')
+  !inputTwo.value && inputTwo.classList.add('error')
 }
 
-checkButton.addEventListener('click', () => {
-  stringOne.value && stringTwo.value ? isAnagram() : showError()
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  ;[inputOne, inputTwo].forEach((input) => input.blur())
+  inputOne.value && inputTwo.value ? isAnagram() : showError()
 })
